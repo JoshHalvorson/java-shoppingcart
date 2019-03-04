@@ -8,7 +8,8 @@ import java.util.Set;
 @Table(name = "cart")
 public class Cart {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long cart_id;
+    @Column(name = "cart_id")
+    private long cartId;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cart")
     private Set<Product> products = new HashSet<>();
@@ -16,12 +17,12 @@ public class Cart {
     public Cart() {
     }
 
-    public long getCart_id() {
-        return cart_id;
+    public long getCartId() {
+        return cartId;
     }
 
-    public void setCart_id(long cart_id) {
-        this.cart_id = cart_id;
+    public void setCartId(long cartId) {
+        this.cartId = cartId;
     }
 
     public Set<Product> getProducts() {

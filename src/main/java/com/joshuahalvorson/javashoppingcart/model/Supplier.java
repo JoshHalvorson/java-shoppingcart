@@ -9,9 +9,11 @@ import java.util.Set;
 @Table(name = "suppliers")
 public class Supplier {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long supplier_id;
+    @Column(name = "supplier_id")
+    private long supplierId;
 
-    private String supplier_name;
+    @Column(name = "supplier_name")
+    private String supplierName;
 
     @ManyToMany
     @JoinColumn(name = "product_id")
@@ -29,19 +31,19 @@ public class Supplier {
         this.supplier_products = supplier_products;
     }
 
-    public long getSupplier_id() {
-        return supplier_id;
+    public long getSupplierId() {
+        return supplierId;
     }
 
-    public void setSupplier_id(long supplier_id) {
-        this.supplier_id = supplier_id;
+    public void setSupplierId(long supplierId) {
+        this.supplierId = supplierId;
     }
 
-    public String getSupplier_name() {
-        return supplier_name;
+    public String getSupplierName() {
+        return supplierName;
     }
 
-    public void setSupplier_name(String supplier_name) {
-        this.supplier_name = supplier_name;
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
     }
 }

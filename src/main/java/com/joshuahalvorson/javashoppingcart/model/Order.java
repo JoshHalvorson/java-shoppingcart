@@ -8,26 +8,30 @@ import java.util.Set;
 @Table(name = "orders")
 public class Order {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long order_id;
+    @Column(name = "order_id")
+    private long orderId;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "order")
     private Set<Product> products = new HashSet<>();
 
-    private String order_shipping_address;
+    @Column(name = "order_shipping_address")
+    private String orderShippingAddress;
 
-    private String order_payment_method;
+    @Column(name = "order_payment_method")
+    private String orderPaymentMethod;
 
-    private boolean order_shipped;
+    @Column(name = "order_shipped")
+    private boolean orderShipped;
 
     public Order() {
     }
 
-    public long getOrder_id() {
-        return order_id;
+    public long getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(long order_id) {
-        this.order_id = order_id;
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
     }
 
     public Set<Product> getProducts() {
@@ -38,27 +42,27 @@ public class Order {
         this.products = products;
     }
 
-    public String getOrder_shipping_address() {
-        return order_shipping_address;
+    public String getOrderShippingAddress() {
+        return orderShippingAddress;
     }
 
-    public void setOrder_shipping_address(String order_shipping_address) {
-        this.order_shipping_address = order_shipping_address;
+    public void setOrderShippingAddress(String orderShippingAddress) {
+        this.orderShippingAddress = orderShippingAddress;
     }
 
-    public String getOrder_payment_method() {
-        return order_payment_method;
+    public String getOrderPaymentMethod() {
+        return orderPaymentMethod;
     }
 
-    public void setOrder_payment_method(String order_payment_method) {
-        this.order_payment_method = order_payment_method;
+    public void setOrderPaymentMethod(String orderPaymentMethod) {
+        this.orderPaymentMethod = orderPaymentMethod;
     }
 
-    public boolean isOrder_shipped() {
-        return order_shipped;
+    public boolean isOrderShipped() {
+        return orderShipped;
     }
 
-    public void setOrder_shipped(boolean order_shipped) {
-        this.order_shipped = order_shipped;
+    public void setOrderShipped(boolean orderShipped) {
+        this.orderShipped = orderShipped;
     }
 }

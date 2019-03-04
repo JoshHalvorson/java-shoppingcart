@@ -6,66 +6,72 @@ import javax.persistence.*;
 @Table(name = "shoppers")
 public class Shopper {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long shopper_id;
+    @Column(name = "shopper_id")
+    private long shopperId;
 
-    private String shopper_name;
+    @Column(name = "shopper_name")
+    private String shopperName;
 
-    private String shopper_billing_address;
+    @Column(name = "shopper_billing_address")
+    private String shopperBillingAddress;
 
-    private String shopper_shipping_address;
+    @Column(name = "shopper_shipping_address")
+    private String shopperShippingAddress;
 
-    private String shopper_phone_number;
+    @Column(name = "shopper_phone_number")
+    private String shopperPhoneNumber;
 
-    private String shopper_payment_method;
+    @Column(name = "shopper_payment_method")
+    private String shopperPaymentMethod;
 
     public Shopper() {
     }
 
-    public long getShopper_id() {
-        return shopper_id;
+    public long getShopperId() {
+        return shopperId;
     }
 
-    public void setShopper_id(long shopper_id) {
-        this.shopper_id = shopper_id;
+    public void setShopperId(long shopperId) {
+        this.shopperId = shopperId;
     }
 
-    public String getShopper_name() {
-        return shopper_name;
+    public String getShopperName() {
+        return shopperName;
     }
 
-    public void setShopper_name(String shopper_name) {
-        this.shopper_name = shopper_name;
+    public void setShopperName(String shopperName) {
+        this.shopperName = shopperName;
     }
 
-    public String getShopper_billing_address() {
-        return shopper_billing_address;
+    public String getShopperBillingAddress() {
+        return shopperBillingAddress;
     }
 
-    public void setShopper_billing_address(String shopper_billing_address) {
-        this.shopper_billing_address = shopper_billing_address;
+    public void setShopperBillingAddress(String shopperBillingAddress) {
+        this.shopperBillingAddress = shopperBillingAddress;
     }
 
-    public String getShopper_shipping_address() {
-        return shopper_shipping_address;
+    public String getShopperShippingAddress() {
+        return shopperShippingAddress;
     }
 
-    public void setShopper_shipping_address(String shopper_shipping_address) {
-        this.shopper_shipping_address = shopper_shipping_address;
+    public void setShopperShippingAddress(String shopperShippingAddress) {
+        this.shopperShippingAddress = shopperShippingAddress;
     }
 
-    public String getShopper_phone_number() {
-        return shopper_phone_number;
+    public String getShopperPhoneNumber() {
+        return shopperPhoneNumber;
     }
 
-    public void setShopper_phone_number(String shopper_phone_number) {
-        this.shopper_phone_number = shopper_phone_number;
+    public void setShopperPhoneNumber(String shopperPhoneNumber) {
+        this.shopperPhoneNumber = shopperPhoneNumber;
     }
 
-    public String getShopper_payment_method() {
-        return shopper_payment_method;
+    public String getShopperPaymentMethod() {
+        return shopperPaymentMethod;
     }
 
-    public void setShopper_payment_method(String shopper_payment_method) {
-        this.shopper_payment_method = shopper_payment_method;
+    public void setShopperPaymentMethod(String shopperPaymentMethod) {
+        this.shopperPaymentMethod = shopperPaymentMethod;
     }
 }
