@@ -22,12 +22,12 @@ public class Product {
     private int product_on_hand;
 
     @ManyToOne
-    @JoinColumn(name ="order_id", nullable=false)
+    @JoinColumn(name ="order_id")
     @JsonIgnore
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name ="cart_id", nullable=false)
+    @JoinColumn(name ="cart_id")
     @JsonIgnore
     private Cart cart;
 
