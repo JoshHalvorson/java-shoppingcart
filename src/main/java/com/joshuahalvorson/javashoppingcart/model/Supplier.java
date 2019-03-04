@@ -1,9 +1,9 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "suppliers")
@@ -13,7 +13,20 @@ public class Supplier {
 
     private String supplier_name;
 
+    @ManyToMany
+    @JoinColumn(name = "product_id")
+    @JsonIgnoreProperties("suppliers")
+    private Set<Product> supplier_products;
+
     public Supplier() {
+    }
+
+    public Set<Product> getSupplier_products() {
+        return supplier_products;
+    }
+
+    public void setSupplier_products(Set<Product> supplier_products) {
+        this.supplier_products = supplier_products;
     }
 
     public long getSupplier_id() {
