@@ -1,9 +1,8 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
@@ -19,7 +18,33 @@ public class Product {
 
     private int product_on_hand;
 
+    @ManyToOne
+    @JoinColumn(name ="order_id", nullable=false)
+    @JsonIgnore
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name ="cart_id", nullable=false)
+    @JsonIgnore
+    private Cart cart;
+
     public Product() {
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public long getProduct_id() {

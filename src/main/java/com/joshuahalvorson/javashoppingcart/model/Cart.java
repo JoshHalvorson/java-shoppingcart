@@ -1,9 +1,6 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +10,7 @@ public class Cart {
     @Id @GeneratedValue
     private long cart_id;
 
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cart")
     private Set<Product> products = new HashSet<>();
 
     public Cart() {
