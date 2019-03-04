@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "suppliers")
 public class Supplier {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long supplier_id;
 
     private String supplier_name;

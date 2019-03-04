@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "orders")
 public class Order {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long order_id;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "order")

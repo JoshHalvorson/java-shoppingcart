@@ -1,14 +1,11 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "shoppers")
 public class Shopper {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long shopper_id;
 
     private String shopper_name;

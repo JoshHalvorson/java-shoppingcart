@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "cart")
 public class Cart {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cart_id;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cart")
