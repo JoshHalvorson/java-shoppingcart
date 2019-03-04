@@ -11,15 +11,20 @@ import java.util.Set;
 @Table(name = "products")
 public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long product_id;
+    @Column(name = "product_id")
+    private long productId;
 
-    private String product_name;
+    @Column(name = "product_name")
+    private String productName;
 
-    private String product_description;
+    @Column(name = "product_description")
+    private String productDescription;
 
-    private double product_cost;
+    @Column(name = "product_cost")
+    private double productCost;
 
-    private int product_on_hand;
+    @Column(name = "product_on_hand")
+    private int productOnHand;
 
     @ManyToOne
     @JoinColumn(name ="order_id")
@@ -63,43 +68,43 @@ public class Product {
         this.cart = cart;
     }
 
-    public long getProduct_id() {
-        return product_id;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(long product_id) {
-        this.product_id = product_id;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getProduct_description() {
-        return product_description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setProduct_description(String product_description) {
-        this.product_description = product_description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public double getProduct_cost() {
-        return product_cost;
+    public double getProductCost() {
+        return productCost;
     }
 
-    public void setProduct_cost(double product_cost) {
-        this.product_cost = product_cost;
+    public void setProductCost(double productCost) {
+        this.productCost = productCost;
     }
 
-    public int getProduct_on_hand() {
-        return product_on_hand;
+    public int getProductOnHand() {
+        return productOnHand;
     }
 
-    public void setProduct_on_hand(int product_on_hand) {
-        this.product_on_hand = product_on_hand;
+    public void setProductOnHand(int productOnHand) {
+        this.productOnHand = productOnHand;
     }
 }
