@@ -4,12 +4,8 @@ import com.joshuahalvorson.javashoppingcart.Repository.ShopperRepository;
 import com.joshuahalvorson.javashoppingcart.model.Product;
 import com.joshuahalvorson.javashoppingcart.model.Shopper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 
@@ -25,6 +21,16 @@ public class AdminController {
             newShopper.setShopperId(shopperid);
             shopperRepository.save(newShopper);
             return newShopper;
+        }
+        return null;
+    }
+
+    @DeleteMapping("/admin/shopper/{shopperid}")
+    public Shopper deleteShopperById(@PathVariable long shopperid) {
+        var foundShopper = shopperRepository.findById(shopperid);
+        if (foundShopper.isPresent()) {
+            shopperRepository.deleteById(shopperid);
+            return foundShopper.get();
         }
         return null;
     }
