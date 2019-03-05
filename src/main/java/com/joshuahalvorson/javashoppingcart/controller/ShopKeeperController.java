@@ -36,5 +36,15 @@ public class ShopKeeperController {
         }
         return null;
     }
-    
+
+    @DeleteMapping("/shopkeeper/product/{productid}")
+    public Product deleteProductById(@PathVariable long productid) {
+        var foundProduct = productRepository.findById(productid);
+        if (foundProduct.isPresent()) {
+            productRepository.deleteById(productid);
+            return foundProduct.get();
+        }
+        return null;
+    }
+
 }
