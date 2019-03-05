@@ -5,6 +5,7 @@ import com.joshuahalvorson.javashoppingcart.Repository.ProductRepository;
 import com.joshuahalvorson.javashoppingcart.Repository.SupplierRepository;
 import com.joshuahalvorson.javashoppingcart.model.Order;
 import com.joshuahalvorson.javashoppingcart.model.Product;
+import com.joshuahalvorson.javashoppingcart.model.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,6 +55,17 @@ public class ShopKeeperController {
         List<Order> tempList = orderRepository.findAll();
         if(tempList != null){
             return tempList;
+        }
+        return null;
+    }
+
+    @PutMapping("/shopkeeper/supplier/{supplierid}")
+    public Supplier updateSupplierById(@RequestBody Supplier newSupplier, @PathVariable long supplierid) throws URISyntaxException {
+        Optional<Supplier> supplierToUpdate = supplierRepository.findById(supplierid);
+        if (supplierToUpdate.isPresent()) {
+            newSupplier.setSupplierId(supplierid);
+            supplierRepository.save(newSupplier);
+            return newSupplier;
         }
         return null;
     }
