@@ -16,10 +16,12 @@ public class ProductController {
 
     @GetMapping("/products")
     public List<Product> getAllProducts(){
-        return productRepository.findAll();
+        List<Product> tempList = productRepository.findAll();
+        if(tempList != null){
+            return tempList;
+        }
+        return null;
     }
-
-    //TODO add product to cart by id
     
     @GetMapping("/products/{productname}")
     public Product getProductByName(@PathVariable String productname){
