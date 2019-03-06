@@ -1,35 +1,42 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "cart")
 public class Cart {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cart_id")
-    private long cartId;
+    @Column(name = "id")
+    private long id;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "cart")
-    private Set<Product> products = new HashSet<>();
+    private long product_id;
+
+    private int quantity;
 
     public Cart() {
     }
 
-    public long getCartId() {
-        return cartId;
+    public long getId() {
+        return id;
     }
 
-    public void setCartId(long cartId) {
-        this.cartId = cartId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public long getProduct_id() {
+        return product_id;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProduct_id(long product_id) {
+        this.product_id = product_id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

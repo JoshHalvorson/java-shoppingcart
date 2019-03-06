@@ -31,11 +31,6 @@ public class Product {
     @JsonIgnore
     private Order order;
 
-    @ManyToOne
-    @JoinColumn(name ="cart_id")
-    @JsonIgnore
-    private Cart cart;
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
     @JsonIgnoreProperties("products")
@@ -58,14 +53,6 @@ public class Product {
 
     public void setOrder(Order order) {
         this.order = order;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
     }
 
     public long getProductId() {
