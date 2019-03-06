@@ -1,5 +1,8 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +14,8 @@ public class Order {
     @Column(name = "order_id")
     private long orderId;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "order")
+    @ManyToMany
+    @JsonIgnoreProperties("orders")
     private Set<Product> products = new HashSet<>();
 
     @Column(name = "order_shipping_address")
