@@ -9,6 +9,7 @@ public class Cart {
     @Column(name = "id")
     private long id;
 
+    @Column(unique = true)
     private long product_id;
 
     private int quantity;
