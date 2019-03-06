@@ -14,9 +14,6 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
-    @Autowired
-    CartRepository cartRepository;
-
     @GetMapping("/products")
     public List<Product> getAllProducts(){
         List<Product> tempList = productRepository.findAll();
@@ -31,31 +28,6 @@ public class ProductController {
         Product foundProduct = productRepository.findByProductName(productname);
         if(foundProduct != null){
             return foundProduct;
-        }
-        return null;
-    }
-
-    @PostMapping("/cart/add/{productid}")
-    public Product addProductToCart(@RequestHeader int quantity, @PathVariable long productid){
-        cartRepository.addProductToCart(productid, quantity);
-        return productRepository.findById(productid).orElseThrow();
-    }
-
-    @DeleteMapping("/cart/remove/{productid}")
-    public Product deleteProductById(@PathVariable long productid) {
-        var foundProduct = productRepository.findById(productid);
-        if (foundProduct.isPresent()) {
-            cartRepository.removeProductFromCart(productid);
-            return foundProduct.get();
-        }
-        return null;
-    }
-
-    @GetMapping("/cart")
-    public List<Cart> getCart(){
-        List<Cart> tempList = cartRepository.findAll();
-        if(tempList != null){
-            return tempList;
         }
         return null;
     }
