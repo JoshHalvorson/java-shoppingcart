@@ -7,12 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class AdminController {
     @Autowired
     ShopperRepository shopperRepository;
+
+    @GetMapping("/admin/shoppers")
+    public List<Shopper> getAllShoppers(){
+        return shopperRepository.findAll();
+    }
 
     @PutMapping("/admin/shopper/{shopperid}")
     public Shopper updateShopper(@RequestBody Shopper newShopper, @PathVariable long shopperid) throws URISyntaxException{
