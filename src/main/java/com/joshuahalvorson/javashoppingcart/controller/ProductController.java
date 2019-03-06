@@ -1,11 +1,11 @@
 package com.joshuahalvorson.javashoppingcart.controller;
 
+import com.joshuahalvorson.javashoppingcart.Repository.CartRepository;
 import com.joshuahalvorson.javashoppingcart.Repository.ProductRepository;
+import com.joshuahalvorson.javashoppingcart.model.Cart;
 import com.joshuahalvorson.javashoppingcart.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,6 +13,9 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    CartRepository cartRepository;
 
     @GetMapping("/products")
     public List<Product> getAllProducts(){
@@ -28,6 +31,21 @@ public class ProductController {
         Product foundProduct = productRepository.findByProductName(productname);
         if(foundProduct != null){
             return foundProduct;
+        }
+        return null;
+    }
+
+    @PostMapping("/cart/{productid}")
+    public Product addProductToCart(@RequestHeader int quantity, @PathVariable long productid){
+        cartRepository.addProductToCart(productid, quantity);
+        return productRepository.findById(productid).orElseThrow();
+    }
+
+    @GetMapping("/cart")
+    public List<Cart> getCart(){
+        List<Cart> tempList = cartRepository.findAll();
+        if(tempList != null){
+            return tempList;
         }
         return null;
     }
