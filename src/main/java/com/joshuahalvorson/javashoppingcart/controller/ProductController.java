@@ -41,6 +41,16 @@ public class ProductController {
         return productRepository.findById(productid).orElseThrow();
     }
 
+    @DeleteMapping("/cart/remove/{productid}")
+    public Product deleteProductById(@PathVariable long productid) {
+        var foundProduct = productRepository.findById(productid);
+        if (foundProduct.isPresent()) {
+            cartRepository.removeProductFromCart(productid);
+            return foundProduct.get();
+        }
+        return null;
+    }
+
     @GetMapping("/cart")
     public List<Cart> getCart(){
         List<Cart> tempList = cartRepository.findAll();

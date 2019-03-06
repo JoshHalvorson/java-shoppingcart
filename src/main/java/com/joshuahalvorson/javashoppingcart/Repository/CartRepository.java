@@ -11,4 +11,9 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     @Modifying
     @Query(value = "INSERT INTO shoppingcart.cart (product_id, quantity) VALUES (:product_id, :quantity)", nativeQuery = true)
     void addProductToCart(long product_id, int quantity);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM shoppingcart.cart WHERE product_id = :product_id", nativeQuery = true)
+    void removeProductFromCart(long product_id);
 }
