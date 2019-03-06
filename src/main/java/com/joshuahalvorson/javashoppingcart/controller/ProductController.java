@@ -35,7 +35,7 @@ public class ProductController {
         return null;
     }
 
-    @PostMapping("/cart/{productid}")
+    @PostMapping("/cart/add/{productid}")
     public Product addProductToCart(@RequestHeader int quantity, @PathVariable long productid){
         cartRepository.addProductToCart(productid, quantity);
         return productRepository.findById(productid).orElseThrow();
