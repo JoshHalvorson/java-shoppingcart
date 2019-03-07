@@ -16,7 +16,6 @@ public class Supplier {
     private String supplierName;
 
     @ManyToMany
-    @JoinColumn(name = "product_id")
     @JsonIgnoreProperties("suppliers")
     private Set<Product> supplier_products;
 

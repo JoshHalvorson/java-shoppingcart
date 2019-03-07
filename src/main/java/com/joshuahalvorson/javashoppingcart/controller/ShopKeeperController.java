@@ -29,6 +29,11 @@ public class ShopKeeperController {
         return productRepository.save(product);
     }
 
+    @PostMapping("/shopkeeper/supplier")
+    public Supplier addSupplier(@RequestBody Supplier supplier){
+        return supplierRepository.save(supplier);
+    }
+
     @PutMapping("/shopkeeper/product/{productid}")
     public Product updateProductById(@RequestBody Product newProduct, @PathVariable long productid) throws URISyntaxException {
         Optional<Product> productToUpdate = productRepository.findById(productid);
@@ -50,9 +55,28 @@ public class ShopKeeperController {
         return null;
     }
 
+    @DeleteMapping("/shopkeeper/supplier/{supplierid}")
+    public Supplier deleteSupplierById(@PathVariable long supplierid) {
+        var foundSupplier = supplierRepository.findById(supplierid);
+        if (foundSupplier.isPresent()) {
+            supplierRepository.deleteById(supplierid);
+            return foundSupplier.get();
+        }
+        return null;
+    }
+
     @GetMapping("/shopkeeper/orders")
     public List<Order> getAllOrders(){
         List<Order> tempList = orderRepository.findAll();
+        if(tempList != null){
+            return tempList;
+        }
+        return null;
+    }
+
+    @GetMapping("/shopkeeper/suppliers")
+    public List<Supplier> getAllSuppliers(){
+        List<Supplier> tempList = supplierRepository.findAll();
         if(tempList != null){
             return tempList;
         }

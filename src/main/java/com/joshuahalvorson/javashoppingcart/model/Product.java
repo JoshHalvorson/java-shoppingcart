@@ -36,7 +36,7 @@ public class Product {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
-    @JsonIgnoreProperties("products")
+    @JsonIgnoreProperties("supplier_products")
     private Set<Supplier> suppliers = new HashSet<>();
 
     public Product() {
