@@ -23,6 +23,9 @@ public class Product {
     @Column(name = "product_cost")
     private double productCost;
 
+    @Column(name = "product_active")
+    private boolean productActive;
+
     @Column(name = "product_on_hand")
     private int productOnHand;
 
@@ -37,6 +40,14 @@ public class Product {
     private Set<Supplier> suppliers = new HashSet<>();
 
     public Product() {
+    }
+
+    public boolean isProductActive() {
+        return productActive;
+    }
+
+    public void setProductActive(boolean productActive) {
+        this.productActive = productActive;
     }
 
     public Set<Supplier> getSuppliers() {
