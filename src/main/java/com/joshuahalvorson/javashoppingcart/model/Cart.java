@@ -14,6 +14,10 @@ public class Cart {
 
     private int quantity;
 
+    @OneToOne
+    @JoinColumn(name = "shopper_id")
+    private Shopper shopperId;
+
     public Cart() {
     }
 

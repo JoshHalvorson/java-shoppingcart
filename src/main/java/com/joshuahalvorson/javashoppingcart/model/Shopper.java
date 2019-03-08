@@ -24,6 +24,10 @@ public class Shopper {
     @Column(name = "shopper_payment_method")
     private String shopperPaymentMethod;
 
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Cart cartId;
+
     public Shopper() {
     }
 
