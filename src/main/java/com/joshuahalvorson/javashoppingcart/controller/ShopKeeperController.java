@@ -1,5 +1,7 @@
 package com.joshuahalvorson.javashoppingcart.controller;
 
+import com.joshuahalvorson.javashoppingcart.model.OrderProductQuantity;
+import com.joshuahalvorson.javashoppingcart.repository.OrderProductQuantityRepository;
 import com.joshuahalvorson.javashoppingcart.repository.OrderRepository;
 import com.joshuahalvorson.javashoppingcart.repository.ProductRepository;
 import com.joshuahalvorson.javashoppingcart.repository.SupplierRepository;
@@ -26,6 +28,9 @@ public class ShopKeeperController {
 
     @Autowired
     OrderRepository orderRepository;
+
+    @Autowired
+    OrderProductQuantityRepository orderProductQuantityRepository;
 
     @ApiOperation(value = "Add new product", response = List.class)
     @ApiResponses(value = {
@@ -151,6 +156,18 @@ public class ShopKeeperController {
             return newSupplier;
         }
         return null;
+    }
+
+    @ApiOperation(value = "Get order product quantity relation", response = List.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully received relation"),
+            @ApiResponse(code = 401, message = "You are not authorized here"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    @GetMapping("/shopkeeper/order/{orderid}")
+    public List<OrderProductQuantity> getOrderProductQuantity(@PathVariable long orderid){
+        return orderProductQuantityRepository.findByOrderId(orderid);
     }
 
 }
