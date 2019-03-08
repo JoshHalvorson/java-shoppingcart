@@ -1,5 +1,7 @@
 package com.joshuahalvorson.javashoppingcart.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,8 +14,10 @@ public class OrderProductQuantity {
     @Column(name = "order_id")
     private long orderId;
 
-    @Column(name = "product_id")
-    private long productId;
+    @ManyToOne
+    @JoinColumn(name = "productid")
+    @JsonIgnoreProperties("orderProductQuantities")
+    private Product product;
 
     private int quantity;
 
@@ -36,12 +40,12 @@ public class OrderProductQuantity {
         this.orderId = orderId;
     }
 
-    public long getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {

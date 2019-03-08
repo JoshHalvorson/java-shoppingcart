@@ -39,7 +39,19 @@ public class Product {
     @JsonIgnoreProperties("supplier_products")
     private Set<Supplier> suppliers = new HashSet<>();
 
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private Set<OrderProductQuantity> orderProductQuantities = new HashSet<>();
+
     public Product() {
+    }
+
+    public Set<OrderProductQuantity> getOrderProductQuantities() {
+        return orderProductQuantities;
+    }
+
+    public void setOrderProductQuantities(Set<OrderProductQuantity> orderProductQuantities) {
+        this.orderProductQuantities = orderProductQuantities;
     }
 
     public boolean isProductActive() {
