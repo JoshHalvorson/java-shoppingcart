@@ -1,8 +1,6 @@
 package com.joshuahalvorson.javashoppingcart.controller;
 
-import com.joshuahalvorson.javashoppingcart.Repository.CartRepository;
-import com.joshuahalvorson.javashoppingcart.Repository.ProductRepository;
-import com.joshuahalvorson.javashoppingcart.model.Cart;
+import com.joshuahalvorson.javashoppingcart.repository.ProductRepository;
 import com.joshuahalvorson.javashoppingcart.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

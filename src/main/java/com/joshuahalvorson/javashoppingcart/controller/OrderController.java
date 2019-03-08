@@ -1,8 +1,8 @@
 package com.joshuahalvorson.javashoppingcart.controller;
 
-import com.joshuahalvorson.javashoppingcart.Repository.OrderProductQuantityRepository;
-import com.joshuahalvorson.javashoppingcart.Repository.OrderRepository;
-import com.joshuahalvorson.javashoppingcart.Repository.ProductRepository;
+import com.joshuahalvorson.javashoppingcart.repository.OrderProductQuantityRepository;
+import com.joshuahalvorson.javashoppingcart.repository.OrderRepository;
+import com.joshuahalvorson.javashoppingcart.repository.ProductRepository;
 import com.joshuahalvorson.javashoppingcart.model.Order;
 import com.joshuahalvorson.javashoppingcart.model.OrderProductQuantity;
 import com.joshuahalvorson.javashoppingcart.model.Product;
