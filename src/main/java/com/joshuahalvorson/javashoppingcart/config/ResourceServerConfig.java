@@ -25,10 +25,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')")
                 .antMatchers("/shopkeeper/**").access("hasAnyRole('ROLE_SHOPKEEPER')")
-                .antMatchers("/order/**").access("hasAnyRole('ROLE_SHOPPER')")
-                .antMatchers("/cart/**").access("hasAnyRole('ROLE_SHOPPER')")
-                .antMatchers("/product/**").access("hasAnyRole('ROLE_SHOPPER')")
-                .antMatchers("/shopper/**").access("hasAnyRole('ROLE_SHOPPER')")
+                //.antMatchers("/order/**").access("hasAnyRole('ROLE_SHOPPER')")
+                //.antMatchers("/cart/**").access("hasAnyRole('ROLE_SHOPPER')")
+                //.antMatchers("/product/**").access("hasAnyRole('ROLE_SHOPPER')")
+                //.antMatchers("/shopper/**").access("hasAnyRole('ROLE_SHOPPER')")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 }
