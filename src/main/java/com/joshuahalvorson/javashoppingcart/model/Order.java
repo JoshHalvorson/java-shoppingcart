@@ -14,8 +14,8 @@ public class Order {
     @Column(name = "order_id")
     private long orderId;
 
-    @OneToMany
-    @JsonIgnoreProperties("order")
+    @ManyToMany
+    @JsonIgnoreProperties("orders")
     private Set<Product> products = new HashSet<>();
 
     @Column(name = "order_shipping_address")
