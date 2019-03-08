@@ -29,10 +29,10 @@ public class Product {
     @Column(name = "product_on_hand")
     private int productOnHand;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name ="order_id")
     @JsonIgnoreProperties("products")
-    private Set<Order> orders = new HashSet<>();
+    private Order order;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
@@ -58,12 +58,12 @@ public class Product {
         this.suppliers = suppliers;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public long getProductId() {
