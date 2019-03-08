@@ -24,7 +24,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 anonymous().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')")
-                .antMatchers("/shopkeeper/**").access("hasAnyRole('ROLE_SHOPKEEPER')")
+                //.antMatchers("/shopkeeper/**").access("hasAnyRole('ROLE_SHOPKEEPER')")
                 //.antMatchers("/order/**").access("hasAnyRole('ROLE_SHOPPER')")
                 //.antMatchers("/cart/**").access("hasAnyRole('ROLE_SHOPPER')")
                 //.antMatchers("/product/**").access("hasAnyRole('ROLE_SHOPPER')")
