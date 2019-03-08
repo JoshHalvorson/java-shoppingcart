@@ -32,11 +32,13 @@ public class Product {
     @ManyToMany
     @JoinColumn(name ="order_id")
     @JsonIgnoreProperties("products")
+    @JsonIgnore
     private Set<Order> orders = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
     @JsonIgnoreProperties("supplier_products")
+    @JsonIgnore
     private Set<Supplier> suppliers = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
